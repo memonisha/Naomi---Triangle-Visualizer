@@ -44,6 +44,17 @@ def draw():
   distGreen= distance(a,b)
   distPurple= distance(b,c)
 
+  fill("white")
+  if distYellow==distPurple and distGreen==distPurple:
+    text("This is an equilateral triangle", 100 ,height-100)
+    
+  elif distYellow== distGreen or distYellow==distPurple or distGreen==distPurple:
+    text("This is an isosceles triangle", 100,height-100)
+    
+  else:
+    text("This is a scalene triangle", 100,height-100)
+    
+    
 
 
   midPointYellowX= (a.x+c.x)/2
@@ -78,4 +89,8 @@ def distance(p,q):
 
 
  
+  '''
+  jamboard:
+  https://jamboard.google.com/d/1yDyCfkYIY3LCCH1bOcD_hblbEwKyFPk6DrMOrQyg3zA/viewer?mtt=axnreovu33m5&f=3
   
+  '''
