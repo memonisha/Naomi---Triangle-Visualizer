@@ -3,6 +3,7 @@ from p5 import *
 
 def setup():
   createCanvas(windowWidth, windowHeight)
+  textFont("comic sans ms")
   global a,b,c 
   a=createMovableCircle(200,300,20)
   b=createMovableCircle(300,200,20)
@@ -11,7 +12,9 @@ def setup():
   
 
 def draw():
-  global a
+  global a, distYellow, distGreen, distPurple, angleA, angleB, angleC
+
+  
   background('black')
   drawTickAxes()
 
@@ -77,7 +80,42 @@ def draw():
   rect(midPointPurpleX,midPointPurpleY,40,20)
   fill(181,143,227)
   text(distPurple,midPointPurpleX,midPointPurpleY)
+
+  angles()
+  fill("red")
+  text(angleA,b.x+10,b.y+5)
+  text(angleB,c.x-30,c.y+5)
+  text(angleC,a.x+10,a.y+5)
+  fill("white")
+  if angleA==90 or angleB==90 or angleC==90: 
+    text("This is a right-angled triangle", 100,height-150) 
+  elif angleA>90 or angleB>90 or angleC>90: 
+    text("This is an obtuse-angled triangle", 100,height-150)
+  else:
+    text("This is an acute-angled triangle", 100,height-150)
   
+
+
+
+def angles(): 
+  global distYellow, distGreen, distPurple, angleA, angleB, angleC
+  a=distYellow
+  b=distGreen
+  c=distPurple
+  
+  a2=a**2
+  b2=b**2
+  c2=c**2
+  
+  angleA=round(acos((c2+b2-a2)/(2*b*c)))
+  angleB=round(acos((a2+c2-b2)/(2*a*c)))
+  angleC=180-(angleA+angleB)
+
+  print(angleA,angleB,angleC)
+  #angleC is the blue one
+  #angleA is the pink one
+  #angleB is the orange one
+
 
  
   
@@ -88,6 +126,11 @@ def distance(p,q):
   return d
 
 
+
+
+
+
+  
  
   '''
   jamboard:
